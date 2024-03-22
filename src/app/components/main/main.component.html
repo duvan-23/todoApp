@@ -1,0 +1,16 @@
+<section class="main">
+    <ul class="todo-list">
+      <li *ngFor="let dato of task;index as i" 
+      [class.completed]="dato.completed"
+      [class.editing]="dato.editing"
+      (dblclick)="change(dato.id, 'edit')"
+      >
+        <div class="view">
+          <input class="toggle" type="checkbox" [checked]="dato.completed" (click)="change(dato.id, 'completed')"/>
+          <label>{{dato.title}}</label>
+          <button class="destroy"></button>
+        </div>
+        <input class="edit" [value]="dato.title" (keydown.enter)="editTitle(dato.id, $event)" (keydown.esc)="change(dato.id, 'edit')"/>
+      </li>
+    </ul>
+</section>
